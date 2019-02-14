@@ -163,11 +163,12 @@ function _M.clientsHaveChanged()
 end
 
 function _M.createPreviewText(client)
-	if client.class then
-		return " - " .. client.class
+	local maxLength = 20;
+    if string.len(client.name) >= (maxLength + 3) then
+        return " - " .. string.sub(client.name, 0, maxLength) .. '...'
 	else
-		return " - " .. client.name
-	end
+        return client.name
+    end
 end
 
 -- Preview is created here.
